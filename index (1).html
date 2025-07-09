@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>uCooked</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      text-shadow: 0 0 10px black;
+    }
+
+    h1 {
+      font-size: 4em;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin-top: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-background">
+    <iframe
+      src="https://www.youtube.com/embed/ui0pSUnZlOw?start=37&autoplay=1&mute=1&controls=0&loop=1&playlist=ui0pSUnZlOw&modestbranding=1&showinfo=0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <div class="content">
+    <h1>uCooked</h1>
+    <p>Something mysterious is coming...</p>
+  </div>
+</body>
+</html>
