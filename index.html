@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Info o tobě</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #0f0;
+      font-family: monospace;
+      padding: 2em;
+    }
+    h1 {
+      color: #0ff;
+    }
+    pre {
+      background-color: #000;
+      padding: 1em;
+      border: 1px solid #0f0;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Informace o tobě</h1>
+  <pre id="info">Načítání...</pre>
+
+  <script>
+    async function getInfo() {
+      const info = {};
+
+      // Datum a čas
+      const now = new Date();
+      info["Datum a čas"] = now.toLocaleString();
+
+      // Info o zařízení
+      info["User-Agent"] = navigator.userAgent;
+      info["Jazyk"] = navigator.language;
+      info["Platforma"] = navigator.platform;
+      info["Rozlišení"] = `${window.screen.width}x${window.screen.height}`;
+
+      // IP adresa a geolokace přes externí API
+      try {
+        const res = await fetch('https://ipapi.co/json/');
+        const data = await res.json();
+        info["IP adresa"] = data.ip;
+        info["Město"] = data.city;
+        info["Země"] = data.country_name;
+        info["ISP"] = data.org;
+      } catch (e) {
+        info["IP info"] = "Nepodařilo se načíst.";
+      }
+
+      // Výpis na stránku
+      const pre = document.getElementById("info");
+      pre.textContent = Object.entries(info).map(([k, v]) => `${k}: ${v}`).join("\n");
+    }
+
+    getInfo();
+  </script>
+</body>
+</html>
